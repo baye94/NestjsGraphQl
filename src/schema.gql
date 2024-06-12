@@ -1,0 +1,67 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Student {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  bio: String!
+  email: String!
+  countryCode: String!
+  phone: String!
+  parentFirstName: String!
+  parentLastName: String!
+  parentPhone: String!
+  createdAt: Date!
+  classe: Classe!
+}
+
+type Classe {
+  id: ID!
+  code: String!
+  label: String!
+  createdAt: Date!
+  students: [Student!]!
+}
+
+scalar Date
+
+type Query {
+  classes: [Classe!]!
+  classe(id: ID!): Classe!
+  students: [Student!]!
+  student(id: ID!): Student!
+}
+
+type Mutation {
+  createClasse(code: String!, label: String!): Classe!
+  updateClasse(id: ID!, code: String!, label: String!): Classe!
+  removeClasse(id: ID!): Classe!
+  createStudent(
+    firstName: String!,
+    lastName: String!,
+    bio: String!,
+    email: String!,
+    countryCode: String!,
+    phone: String!,
+    parentFirstName: String!,
+    parentLastName: String!,
+    parentPhone: String!,
+    classeId: ID!
+  ): Student!
+  updateStudent(
+    id: ID!,
+    firstName: String!,
+    lastName: String!,
+    bio: String!,
+    email: String!,
+    countryCode: String!,
+    phone: String!,
+    parentFirstName: String!,
+    parentLastName: String!,
+    parentPhone: String!,
+    classeId: ID!
+  ): Student!
+  removeStudent(id: ID!): Student!
+}
